@@ -1,0 +1,790 @@
+/* Start Navbar */
+.x a {
+    color: red !important;
+}
+
+
+span {
+    color: #F26E6B;
+}
+
+.navbar-default {
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 15px;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+}
+
+
+.navbar-default .navbar-nav > li > a {
+    color: #000;
+    letter-spacing: .1em;
+    font-weight: 500;
+}
+
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #F26E6B;
+}
+
+
+.dropdown-menu.user-links > li > a {
+    color: #000;
+    letter-spacing: .1em;
+    font-weight: 500;
+    text-align: center;
+}
+
+
+.dropdown-menu > li > a:hover {
+    color: #F26E6B;
+}
+
+span.badge {
+    background-color: #F26E6B;
+    margin-top: -18px;
+    margin-left: 1.5px;
+}
+
+.navbar-brand {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #000;
+    font-size: 20px;
+    color: #000 !important;
+    letter-spacing: .2em;
+    padding-top: 12px;
+}
+
+
+.navbar-nav {
+    float: none;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+.navbar-nav .username {
+    float: right;
+}
+
+.navbar-nav > li {
+    display: inline-block;
+    float: none;
+}
+
+
+button.navbar-toggle.collapsed {
+    margin-top: 20px;
+}
+
+/* End Navbar */
+
+
+/* Start Breadcrumb */
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    margin-left: -1.5%;
+    margin-right: -1.5%;
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 15px;
+    letter-spacing: .05em;
+    font-weight: 500;
+}
+
+.breadcrumb a {
+    color: #F26E6B;
+    text-decoration: none;
+}
+
+.breadcrumb > .active {
+    color: #000;
+}
+
+/* End Breadcrumb */
+
+
+/****************** Start Home Page ********************************/
+
+
+/* Start Category */
+
+.dropdown.category {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 36px;
+
+}
+
+.dropdown-button {
+    color: #000 !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: none !important;
+    border-bottom: 2px solid #F26E6B !important;
+    border-radius: 0 !important;
+    font-size: 20px !important;
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 500;
+    /* border-color: #F26E6B !important; */
+}
+
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.dropdown-menu-center {
+    left: 50% !important;
+    right: auto !important;
+    text-align: left !important;
+    transform: translate(-50%, 0) !important;
+    min-width: 260px !important;
+
+}
+
+.dropdown-menu-center > li > a {
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 15px;
+}
+
+span.n-products {
+    float: right !important;
+}
+
+/* End Category */
+
+
+/* Start Products divs */
+
+.product-container {
+    text-align: center;
+}
+
+.empty-products {
+    height: 80vh;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.product-div {
+    background-color: #a58585;
+    margin: 1%;
+    height: 65vh;
+    float: none;
+    display: inline-block;
+    text-align: left;
+    font-size: 13px;
+    position: relative;
+}
+
+.product-div > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    width: 100%;
+    height: 75%
+
+}
+
+.product-details-container {
+    color: black;
+    background-color: #f7f7f7;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 27%;
+    width: 100%;
+    max-width: 100%;
+    padding-top: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+
+.product-details-container > p {
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: -7px;
+    padding-left: 10px;
+    border: solid 1px black;
+}
+
+.product-details-container > h3 {
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: -4px;
+    margin-bottom: 17px;
+}
+
+
+@media screen and (max-height: 400px) {
+
+    .product-div {
+        /* height: 90vh; */
+        height: 450px;
+        background-color: red;
+    }
+
+}
+
+@media screen and (min-height: 400px) and (max-height: 600px) {
+
+    .product-div {
+        /* height: 90vh; */
+        height: 450px;
+        background-color: yellow;
+    }
+
+}
+
+
+@media screen and (max-width: 500px) {
+
+    .product-div {
+        /* height: 90vh; */
+        height: 320px;
+        background-color: red;
+    }
+
+}
+
+
+@media screen and (min-width: 650px) and (max-width: 770px) {
+
+    .product-div {
+        /* height: 90vh; */
+        height: 530px;
+        background-color: yellow;
+    }
+
+}
+
+/* End Products divs */
+
+
+/****************** End Home Page ********************************/
+
+
+/****************** Start Package Details Page ********************************/
+/* Start Package Details */
+
+.left-box {
+    height: 400px;
+    /* background-color: red; */
+    position: relative;
+    margin: 50px 0 0;
+}
+
+.left-box img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* top: 0;
+    left: 0; */
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.right-box {
+    height: 400px;
+    /* background-color: blue; */
+    padding: 5px 25px;
+    overflow-y: scroll;
+    margin: 50px 0 0;
+}
+
+.right-box > p {
+    font-size: 18px;
+}
+
+.right-box > h3 {
+    /*color: #EE4266;*/
+    color: #F26E6B;
+}
+
+/*.right-box > p.product-description {*/
+/*    text-align: right;*/
+/*}*/
+
+@media screen and (max-width: 770px) {
+    .right-box {
+        /* text-align: center; */
+    }
+}
+
+.radio-list {
+    margin: 25px 0;
+}
+
+.add-to-cart {
+    background-color: #ee4266;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 20px;
+    height: 60px;
+    margin: 0 auto;
+
+}
+
+/* End Package Details */
+
+
+/* Start Counter Button */
+
+.center-button-container {
+    width: 100px;
+    margin: 35px 0;
+}
+
+
+@media screen and (max-width: 770px) {
+    .center-button-container {
+        /* width: 20%;
+        margin: 35px auto; */
+        /* display: inline-block; */
+    }
+}
+
+
+.input-group-btn > .counter-btn {
+    background-color: white;
+    color: #F26E6B;
+    border: solid #ee4266 2px;
+    height: 43px;
+    outline: none;
+    z-index: 2;
+    margin-left: -1px;
+    font-size: 20px;
+}
+
+.input-group-btn > .counter-btn:hover {
+    background-color: #ee4266;
+    color: white;
+}
+
+input.counter-input[type="text"] {
+    border: solid #ced4da 2px;
+    height: 43px;
+    width: 60px;
+    text-align: center;
+    font-size: 18px;
+    color: #495057;
+}
+
+input.counter-input[type="text"]:focus {
+    border: solid #ee4266 2px;
+    outline: none;
+    box-shadow: none !important;
+}
+
+/* End Counter Button */
+
+.added-to-the-cart {
+    visibility: hidden;
+}
+
+/****************** End Package Details Page ********************************/
+
+
+/****************** Start Dashboard Page ********************************/
+
+.dashboard-tabel-container {
+    height: 80vh;
+    overflow: scroll;
+}
+
+
+.dashboard-tabel-container table, th, td {
+    border: 1px solid #dee2e6;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+
+.dashboard-tabel-container table {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.dashboard-tabel-container th, td {
+    /*padding: 40px;*/
+    padding: 22px;
+}
+
+.dashboard-tabel-container th {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.dashboard-tabel-container td {
+    font-size: 18px;
+    font-weight: 500;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+
+/****************** End Dashboard Page ********************************/
+
+
+/****************** Start Cart Page ********************************/
+
+.center-button-container-cart {
+    width: 79px;
+    margin: 0 auto;
+    margin-left: -20px;
+}
+
+.cart-h4 {
+    margin-left: 18%;
+}
+
+.submit-cart {
+    /*display: block;*/
+    /*margin: 20px auto;*/
+    /*width: 200px;*/
+    /*height: 40px;*/
+    /*background-color: #ee4266;*/
+    /*border: none;*/
+    /*border-radius: 15px;*/
+    width: 200px;
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #F26E6B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+}
+
+.submit-cart:focus {
+    outline: none;
+}
+
+.submit-cart > a {
+    color: white;
+    text-decoration: none;
+}
+
+/****************** End Cart Page ********************************/
+
+
+/****************** Start Client Info Page ********************************/
+
+.client-info {
+    overflow-x: hidden;
+    height: 100vh;
+    /* background-color: red; */
+    text-align: center;
+    padding: 10px;
+}
+
+.client-info > h1 {
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.client-info > form > div > input {
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    /* float: left; */
+}
+
+.form-input-container {
+    float: none !important;
+    margin: 10px auto;
+}
+
+.form-submit-button-container {
+    width: 200px;
+    float: none !important;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.form-submit-button-container > input {
+    background-color: #F26E6B;
+    color: #FFFFFF;
+}
+
+.custom-client-info-field {
+    margin-left: 10px;
+}
+
+ul.errorlist > li {
+    text-align: left;
+    color: #ff0000;
+}
+
+
+/****************** End Client Info Page ********************************/
+
+/****************** Start History Page ********************************/
+
+.history-tabel-container > p {
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/****************** End History Page ********************************/
+
+/****************** Start Change Password Page ********************************/
+
+
+/****************** End Change Password Page ********************************/
+
+
+/****************** Start Thank You Page ********************************/
+
+.text-success {
+    color: #28a745 !important;
+}
+
+.display-3 {
+    font-size: 6.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.text-black {
+    margin-top: 0;
+}
+
+
+.thank-you-container {
+    height: 80vh;
+    margin-top: 60px;
+}
+
+a.thank-you-back-to-shop-button {
+    background-color: #EB1F4A;
+    height: 50px;
+    width: 150px;
+    padding: 11px;
+    font-size: 16px;
+    border: none;
+}
+
+a.thank-you-back-to-shop-button:hover {
+    background-color: #EB1F4A;
+}
+
+a.thank-you-back-to-shop-button:focus {
+    background-color: #EB1F4A;
+    outline: none;
+}
+
+a.thank-you-back-to-shop-button:active {
+    background-color: #EB1F4A !important;
+    outline: none;
+}
+
+/****************** End Thank You Page ********************************/
+
+
+/****************** Start Msg-Support Page ********************************/
+
+.msg-support-container {
+    height: 80vh;
+    /* background-color: red; */
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    border: solid #F5F0FF 2px;
+    border-radius: 10px;
+}
+
+.msg-support-header {
+    text-align: center;
+    /* background-color: blue; */
+}
+
+.msg-box {
+    height: 80vh;
+    /* background-color: green; */
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+
+.msg-reciver, .msg-sender {
+    width: 200px;
+    /* background-color: yellow; */
+    /* border-radius: 5px; */
+    padding: 10px 10px 1px;
+    margin-top: 20px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.msg-reciver {
+    background-color: #F5F0FF;
+    color: #24292E;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.msg-sender {
+    float: right;
+    background-color: #24292E;
+    color: #fff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.msg-time-date {
+    /* width: 100%; */
+    font-size: 12px;
+}
+
+.msg-form-container {
+    margin-left: 0;
+}
+
+.inner-form-container > form > input[type="text"] {
+    height: 50px;
+    width: 100%;
+    margin-top: 10px;
+    /*margin-left: 25%;*/
+    border-radius: 15px;
+    border: solid #F5F0FF 2px;
+    padding: 10px;
+}
+
+.inner-form-container > form > input[type="text"]:focus {
+    /* border: solid #F5F0FF 1px !important; */
+    outline: none;
+}
+
+.inner-form-container > form > input[type="submit"] {
+    height: 40px;
+    width: 30%;
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+    color: white;
+    background-color: #EE4266;
+    border: none;
+}
+
+/****************** End Msg-Support Page ********************************/
+
+
+/****************** Start My Wallet Page ********************************/
+
+.hold_space {
+    height: 80vh;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.hold_space > p {
+    font-size: 25px;
+}
+
+.hold_space > a {
+    font-size: 16px;
+}
+
+.hold_space > a > button {
+    width: 152px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #F26E6B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+}
+
+.hold_space > a > button:focus {
+    outline: none;
+}
+
+#submit_money_request {
+    background-color: #f26e6b;
+    color: #FFFFFF;
+}
+
+/****************** End My Wallet Page ********************************/
+
+
+/* Start Pagination */
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 50px 0 10px;
+    border-radius: 4px;
+}
+
+span.total-pages-num {
+    background-color: #EE4266;
+    color: #FFFFFF;
+}
+
+/* End Pagination */
+
+/* Start Footer */
+
+.footer {
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
+    background-color: #232222;
+    color: #FFFFFF;
+}
+
+.footer > hr {
+    border-top: 0.1px solid black;
+}
+
+.footer-content {
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+.footer-content > p {
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 15px;
+    letter-spacing: .1em;
+    font-weight: 500;
+}
+
+/* End Footer */

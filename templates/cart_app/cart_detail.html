@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% block title %}Cart{% endblock title %}
+
+{% block content %}
+
+<!-- Start Breadcrumb -->
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="{% url 'product:product_list' %}">الرئيسية</a></li>
+        <li class="active">عربة التسوق</li>
+    </ol>
+</div>
+<!-- End Breadcrumb -->
+
+<!-- Start Cart -->
+<!--dashboard-tabel-container is the container to refresh cart-->
+<div id="dashboard-tabel-container">
+
+    {% if cart %}
+
+        <div class="container">
+
+            <div class="dashboard-tabel-container text-center" >
+                <table>
+                    <tr>
+                        <th>المنتج</th>
+                        <th>المقاس</th>
+                        <th>السعر</th>
+                        <th>العمولة</th>
+                        <th>الكمية</th>
+                        <th>السعر النهائي</th>
+                        <th>العمولة النهائية</th>
+                        <th>إزالة</th>
+                    </tr>
+                    {% for item in cart %}
+                    <tr>
+                        <td>{{ item.product.product_name }}</td>
+                        <td class="td-size{{ item.product.id }}{{ item.size }}">{{ item.size }}</td>
+                        <td>{{ item.product.product_price }}</td>
+                        <td>{{ item.product.product_commission }}</td>
+                        <td class="td-qunat{{ item.product.id }}{{ item.size }}">{{ item.quantity }}</td>
+                        <td class="product-total-price{{ item.product.id }}{{ item.size }}">{{ item.total_price }}</td>
+                        <td>{{ item.total_commission }}</td>
+                        <td><a href="{% url 'cart_app:cart_remove' item.product.id item.size %}" class="cart-item-remove">إزالة</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+<!--                <button type="Text" name="button" class="submit-cart"><a href="{% url 'order_app:order_detail' %}">CONTINUE ...</a></button>-->
+                <a href="{% url 'order_app:order_detail' %}"><button class="submit-cart">اكمل ...</button></a>
+
+            </div>
+            <h3 class="text-center" id="your-commission">العمولة على جميع المنتجات ::: {{ cart.get_total_commission }} ج.م</h3>
+            <h3 class="text-center" id="total-price">سعر جميع المنتجات ::: {{ cart.get_total_price }} ج.م</h3>
+
+        </div>
+
+
+    {% else %}
+        <!-- Start Empty Products -->
+        <div class="container">
+            <div class="empty-products">
+                <h1>لا يوجد منتجات بعد</h1>
+            </div>
+        </div>
+        <!-- End Empty Products -->
+    {% endif %}
+</div>
+{% endblock content %}
+
+{% block js %}
+
+    <script>
+        window.addEventListener('storage', () => {
+
+            $("#dashboard-tabel-container").load(location.href + " #dashboard-tabel-container");
+
+        });
+
+        $(window).on('load', function(){
+            // restore values
+            let cart_length = {{ cart|length }}
+            localStorage.setItem("cart_length", cart_length);
+        });
+    </script>
+
+
+<!--    <script>-->
+<!--        $.ajaxSetup({-->
+<!--                headers: {-->
+<!--                   "X-CSRFToken": '{{ csrf_token }}'-->
+<!--                }-->
+<!--        });-->
+
+<!--        window.addEventListener('storage', () => {-->
+<!--             $.ajax({-->
+<!--                url: "{% url 'cart_app:cart_detail_ajax' %}",-->
+<!--                type: 'GET',-->
+<!--                success: function (data) {-->
+<!--                    console.log("works fine");-->
+<!--                    console.log(data);-->
+<!--                    let key;-->
+
+<!--                    for (key in data) {-->
+<!--                        let product_total_price = ".product-total-price" + key;-->
+<!--                        let quantity_td = ".td-qunat" + key;-->
+<!--                        console.log(product_total_price);-->
+<!--                        console.log(quantity_td);-->
+<!--                        // $("input[name='quant" + key +"']").val(data[key]["quantity"]);-->
+<!--                        $(quantity_td).text(data[key]["quantity"]);-->
+<!--                        $(product_total_price).text(data[key]["total_price"]);-->
+<!--                        $("h3#total-price").text("Total Price ::: " + data[key]["total_cart_price"] + " L.E");-->
+<!--                    }-->
+<!--                }-->
+<!--            })-->
+<!--        });-->
+
+
+<!--        // $('button.plus-minus-btn').click(function (){-->
+<!--        //-->
+<!--        //     let product_id = $(this).attr("data-id");-->
+<!--        //     let selected_id = $(this).attr("data-selecting");-->
+<!--        //     let cart_notification_number = $("#cart-notifications").text();-->
+<!--        //     let product_input_quantity = $("input[name='quant" + selected_id +"']").val();-->
+<!--        //     // let product_chosen_size = $("input[name='chosen-size" + product_id + "']:checked").val();-->
+<!--        //     let product_chosen_size = ".td-size" + selected_id;-->
+<!--        //     let product_chosen_size_value = $(product_chosen_size).val()-->
+<!--        //-->
+<!--        //     console.log(product_input_quantity)-->
+<!--        //-->
+<!--        //     $.ajax({-->
+<!--        //         url: '{% url "cart_app:cart_add" %}',-->
+<!--        //         // url: '/cart/add/',-->
+<!--        //         type: "POST",-->
+<!--        //         data: {-->
+<!--        //             'product_id': product_id,-->
+<!--        //             'quantity': product_input_quantity,-->
+<!--        //             'size': product_chosen_size_value-->
+<!--        //         },-->
+<!--        //         success: function (data){-->
+<!--        //             localStorage.setItem("cart_length", data['length']);-->
+<!--        //             $(".cart-notifications").html(localStorage.getItem("cart_length"));-->
+<!--        //             // console.log(data['length']);-->
+<!--        //-->
+<!--        //             console.log("works fine again")-->
+<!--        //-->
+<!--        //         //-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--        //             $.ajax({-->
+<!--        //                 url: "{% url 'cart_app:cart_detail_ajax' %}",-->
+<!--        //                 type: 'GET',-->
+<!--        //                 success: function (data) {-->
+<!--        //                     console.log("works fine");-->
+<!--        //                     console.log(data);-->
+<!--        //-->
+<!--        //                     // let key;-->
+<!--        //                     for (let key in data) {-->
+<!--        //                         let product_total_price = ".product-total-price" + key;-->
+<!--        //                         // console.log(product_total_price);-->
+<!--        //                         // console.log(key)-->
+<!--        //                         console.log("data before " + data[key]["quantity"])-->
+<!--        //                         // $("input[name='quant" + key +"']").val(data[key]["quantity"]);-->
+<!--        //                         console.log("data after" + data[key]["quantity"])-->
+<!--        //                         // $(product_total_price).text(data[key]["total_price"]);-->
+<!--        //                         // $("h3#total-price").text("Total Price ::: " + data[key]["total_cart_price"] + " L.E");-->
+<!--        //                     }-->
+<!--        //                 }-->
+<!--        //             })-->
+<!--        //         //-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--        //-->
+<!--        //         }-->
+<!--        //     })-->
+<!--        // });-->
+<!--    </script>-->
+
+{% endblock js%}

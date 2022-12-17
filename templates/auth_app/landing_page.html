@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Affilliate</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}"> <!-- font awesomw lib -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <div class="landing">
+
+            <video id="myVideo"  autoplay muted>
+<!--                <source src="{% static 'video/affiliat.mp4' %}" type="video/mp4">-->
+            </video>
+
+            <div>
+                <img id="myImage" src="{% static 'images/landing_mobile2.jpg' %}" alt="">
+            </div>
+
+      <!-- Start Navbar -->
+      <nav class="navbar navbar-default">
+          <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#burger-menue"
+                          aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="{% url 'landing_page' %}">
+                      <span id="affiliators" style="letter-spacing:0">أفلييت
+                    </span>
+                  </a>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="burger-menue">
+                  <ul class="nav navbar-nav navbar-right text-right">
+                      <li><a href="{% url 'sign_in' %}">تسجيل الدخول </a></li>
+                      <li><a href="{% url 'sign_up' %}">تسجيل الحساب</a></li>
+                  </ul>
+              </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+      </nav>
+      <!-- End Navbar -->
+
+      <!-- Start Content -->
+
+      <div class="x container">
+
+
+      </div>
+      <div class="text ">
+
+          <!-- <p>CONTACT US : <a href="https://www.google.com/"><i class="fab fa-facebook-f"></i></a></p> -->
+<!--          <span id="contact-us">CONTACT US : <a href="https://www.facebook.com/affiliatorsbusiness/"><i-->
+<!--                  class="fab fa-facebook-f"></i></a></span>-->
+      </div>
+      <!-- End Content -->
+
+      <div class="overlay"></div>
+
+  </div>
+
+  <script src="static/js/jquery-3.5.1.min.js"></script>
+  <script src="static/js/jquery.nicescroll.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/main.js"></script>
+
+<!--  <script>-->
+<!--    if (window.matchMedia("(max-width: 480px)").matches) {-->
+<!--      $("#myVideo").css("display", "none");-->
+<!--    }-->
+<!--  </script>-->
+</body>
+</html>

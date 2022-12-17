@@ -1,0 +1,70 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% load widget_tweaks %}
+
+{% block title %}Request Money{% endblock title %}
+
+{% block content %}
+
+    <!-- Start Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'product:product_list' %}">الرئيسية</a></li>
+            <li class="active">طلب العمولة</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+
+    <!-- Start Request Money -->
+
+    <div class="container">
+
+        <div class="form-container client-info">
+
+            <h1>طلب العمولة</h1>
+
+            <form class="" action="{% url 'wallet_app:request_money' %}" method="post" novalidate>
+
+                {% csrf_token %}
+
+                <div class="col-xs-7 form-input-container">
+<!--                    <input type="text" class="form-control" placeholder="Client Name">-->
+                    {% render_field form.money_receive_number class="form-control" placeholder="رقم المستلم" %}
+                    <!-- Put Field Error in the P -->
+                    <p class="client-info-form-error">{{ form.money_receive_number.errors }}</p>
+                </div>
+
+                <div class="col-xs-7 form-input-container">
+<!--                    <input type="text" class="form-control" placeholder="Phone number 1">-->
+                    {% render_field form.id_number class="form-control" placeholder="رقم البطاقة" %}
+                    <p class="client-info-form-error">{{ form.id_number.errors }}</p>
+                </div>
+
+<!--                <div class="col-xs-7 form-input-container">-->
+<!--&lt;!&ndash;                    <input type="text" class="form-control" placeholder="Phone number 1">&ndash;&gt;-->
+<!--                    {% render_field form.money_amount class="form-control" placeholder="How much do you want ?" %}-->
+<!--                    <p class="client-info-form-error">{{ form.money_amount.errors }}</p>-->
+<!--                </div>-->
+
+                <div class="col-xs-7 form-submit-button-container">
+                    <input type="submit" class="form-control" id="submit_money_request" placeholder="Submit" value="ارسال">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- End Request Money -->
+
+
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js%}

@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% block title %}My Wallet{% endblock title %}
+
+{% block content %}
+
+    <!-- Start Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'product:product_list' %}">الرئيسية</a></li>
+            <li class="active">المحفظة</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Start Wallet -->
+    <div class="container">
+        <div class="hold_space">
+            {% if money_in_wallet %}
+                <p>العمولة المحتملة ::: <span>{{ money_in_wallet.wallet_potential_commission }} L.E</span></p>
+                <p>العمولة المؤكدة ::: <span>{{ money_in_wallet.wallet_total_commission }} L.E</span></p>
+                <a href="{% url 'wallet_app:request_money' %}"><button>طلب العمولة</button></a>
+            {% else %}
+                <p>لا توجد عمولة بعد</p>
+            {% endif %}
+            
+            <a href="{% url 'wallet_app:current_money_requests' %}"><button>طلبات العمولة الحالية</button></a>
+            <a href="{% url 'wallet_app:request_money_history' %}"><button>طلبات العمولة السابقة</button></a>
+        </div>
+    </div>
+    <!-- End Wallet -->
+
+{% endblock content %}

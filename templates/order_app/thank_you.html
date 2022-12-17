@@ -1,0 +1,34 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% block title %} Orders History {% endblock title %}
+
+{% block content %}
+
+    <!-- Start Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#">الرئيسية</a></li>
+            <li class="active">تم ارسال الاوردر</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Start Thank You -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center thank-you-container">
+                <span class="icon-check_circle display-3 text-success"><i class="fas fa-check-circle"></i></span>
+                <h2 class="display-3 text-black">شكرا لك</h2>
+                <p class="lead mb-5">تم ارسال الاوردر</p>
+                <p><a href="{% url 'product:product_list' %}" class="btn btn-sm btn-primary thank-you-back-to-shop-button">الرئيسية</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- End Thnak You -->
+
+{% endblock content %}

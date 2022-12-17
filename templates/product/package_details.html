@@ -1,0 +1,194 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% block title %}Package Details{% endblock title %}
+
+{% block content %}
+
+    <!-- Start Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'product:product_list' %}">الرئيسية</a></li>
+            <li class="active">تفاصيل المنتجات</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Start Category -->
+    <div class="container ">
+        <div class="dropdown text-center category">
+
+            <button class="btn btn-default dropdown-toggle dropdown-button" type="button" data-toggle="dropdown">
+            Download Product Sessions
+            <span class="caret"></span></button>
+
+            <ul class="dropdown-menu dropdown-menu-center">
+                {% for product in products %}
+                    <li class=""><a href="{{ product.product_session_url }}">{{ product.product_name }}</a></li>
+                {% endfor %}
+<!--                <li class=""><a href="#">Red session</a></li>-->
+<!--                <li class=""><a href="#">Black session</a></li>-->
+<!--                <li class=""><a href="#">All sessions</a></li>-->
+            </ul>
+        </div>
+    </div>
+    <!-- End Category -->
+
+    <!-- Start Package Details -->
+
+    {% for product in products %}
+        <div class="container">
+            <div class="row">
+
+                <div class="left-box cols-xs-12 col-sm-6 col-md-4">
+                    {% if product.product_image %}
+                        <img src="{{ product.product_image.url }}" class="" alt="">
+                    {% else %}
+                        <img src="{% static 'images/default_product_image.jpg' %}" alt="">
+                    {% endif %}
+                </div>
+
+                <div class="right-box cols-xs-12 col-sm-6 col-md-8">
+                    <h1>{{ product.product_name }}</h1>
+                    <p class="product-description">{{ product.product_description }}</p>
+
+                    <h3>Available - المتوفر</h3>
+
+                    {% for i in product.size_amount.all %}
+
+                        {% if i.size %}
+                            <p>Size : {{ i.size }} &nbsp; &nbsp; &nbsp; &nbsp; Stock Number : {{ i.amount }} &nbsp; &nbsp; &nbsp; &nbsp;  {% if not i.amount_renewable %} غير {% endif %} متجدد </p>
+                        {% else %}
+                            <p> Stock Number : {{ i.amount }} &nbsp; &nbsp; &nbsp; &nbsp; {% if not i.amount_renewable %} غير {% endif %} متجدد </p>
+                        {% endif %}
+
+                    {% endfor %}
+
+                    <h3>Price - السعر</h3>
+                    <p>{{ product.product_price }} L.E --- السعر شامل العمولة </p>
+
+                    <h3>Commission - العمولة</h3>
+                    <p>{{ product.product_commission }} L.E</p>
+
+                    <hr>
+
+                    {% if product.size_amount.all %}
+                        <div class="radio-list" id="size-list{{ product.id }}">
+                            {% for i in product.size_amount.all %}
+                                {% if i.size and i.amount > 0 %}
+                                    <label class="radio-inline"><input type="radio" name="chosen-size{{ product.id }}" value="{{ i.size }}">{{ i.size }}</label>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <!-- Start Counter Button -->
+                    <div class="center-button-container">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button type="button" class="counter-btn btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant{{product.id}}">
+                                    -
+                                </button>
+                            </span>
+
+                            <input type="text" name="quant{{ product.id }}" class="counter-input form-control input-number" value="1" min="1" max="10">
+
+                            <span class="input-group-btn">
+                                <button type="button" class="counter-btn btn btn-default btn-number" data-type="plus" data-field="quant{{product.id}}">
+                                    +
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- End Counter Button -->
+                    <button type="button" name="button" id="cart-button{{ product.id }}" data-field="{{ product.id }}" class="add-to-cart" >أضف الى العربة</button>
+                    <span class="added-to-the-cart" id="added-to-cart{{ product.id }}">* تم اضافة المنتاجات الي العربة </span>
+                </div>
+
+            </div>
+
+        </div>
+    {% endfor %}
+
+    <!-- End Package Details -->
+
+
+{% endblock content %}
+
+{% block js %}
+    <script>
+        $.ajaxSetup({
+                headers: {
+                   "X-CSRFToken": '{{ csrf_token }}'
+                }
+              });
+
+
+        $('button.add-to-cart').click(function (){
+
+            let product_id = $(this).attr("data-field");
+            let cart_notification_number = $("#cart-notifications").text();
+            let product_input_quantity = $("input[name='quant" + product_id +"']").val();
+            let product_chosen_size = $("input[name='chosen-size" + product_id + "']:checked").val();
+            let check_existance_of_product_size = $("#size-list" + product_id).children();
+            let added_to_cart_notify = $("#added-to-cart" + product_id);
+
+            //check if the element exist first then check its value
+            if(check_existance_of_product_size.length){
+                console.log("exist")
+                if (!product_chosen_size) {
+                    alert("من فضلك اختر مقاس");
+                }
+                else {
+                    $.ajax({
+                        url: '{% url "cart_app:cart_add" %}',
+                        type: "POST",
+                        data: {
+                            'product_id': product_id,
+                            'quantity': product_input_quantity,
+                            'size': product_chosen_size
+                        },
+                        success: function (data){
+                            localStorage.setItem("cart_length", data['length']);
+                            $(".cart-notifications").html(localStorage.getItem("cart_length"));
+                            $(added_to_cart_notify).removeClass("added-to-the-cart");
+                            console.log(data['length']);
+                        }
+                    })
+                }
+            }
+            else {
+                $.ajax({
+                    url: '{% url "cart_app:cart_add" %}',
+                    type: "POST",
+                    data: {
+                        'product_id': product_id,
+                        'quantity': product_input_quantity,
+                        'size': 'none'
+                    },
+                    success: function (data){
+                        localStorage.setItem("cart_length", data['length']);
+                        $(".cart-notifications").html(localStorage.getItem("cart_length"));
+                        $(added_to_cart_notify).removeClass("added-to-the-cart");
+                        console.log(data['length']);
+
+                    }
+                })
+            }
+        })
+    </script>
+{% endblock js %}
+
+
+
+
+
+
+
+
+
+

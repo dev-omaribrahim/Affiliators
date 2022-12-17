@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+    <!-- Start Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'product:product_list' %}">الرئيسية</a></li>
+            <li class="active">المنتجات</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Start Category -->
+    <div class="container ">
+        <div class="dropdown text-center category">
+            <button class="btn btn-default dropdown-toggle dropdown-button" type="button" data-toggle="dropdown">
+                اختر من الاقسام
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-center">
+                {% for category in categories %}
+                    <li><a href="{{ category.get_absolute_url }}">{{ category.category_name}}<span class="n-products">{{ category.packages.count }}</span></a></li>
+                {% empty %}
+                    <li><a href="#">No Categories Yet <span class="n-products">0</span></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- End Category -->
+
+    <!-- Start Products -->
+
+    <div class="products">
+
+        <div class="container ">
+
+            <div class=" product-container row">
+                {% for package in packages %}
+                <div class=" col-xs-7 col-sm-5 col-md-4 col-lg-3 product-div">
+                    {% if package.package_image %}
+                        <img src="{{ package.package_image.url }}" class="" alt="">
+                    {% else %}
+                        <img src="{% static 'images/default_product_image.jpg' %}" alt="">
+                    {% endif %}
+                    <div class="product-details-container text-left">
+                        <h3 class="text-center"><a href="{{ package.get_absolute_url }}">{{ package.package_name }}</a></h3>
+
+                        {% with info=package.get_package_info %}
+                            <p>السعر ::: {{ info.price|clear_text }}</p>
+                            <p>العمولة ::: {{ info.commission|clear_text }}</p>
+                            <p>المقاسات ::: {{ info.sizes|clear_text }}</p>
+                            <p>الالوان ::: {{ info.colors|clear_text }}</p>
+                            <p>الكمية ::: {{ info.stock }}</p>
+                        {% endwith %}
+
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    <!-- End Products -->
+
+    <!-- Start Pagination -->
+    {% include 'pagination.html' with packages=packages %}
+    <!-- End Pagination -->
+
+{% endblock content %}

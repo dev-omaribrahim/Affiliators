@@ -1,0 +1,76 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% load widget_tweaks %}
+
+{% block title %}Orders Dashboard{% endblock title %}
+
+{% block content %}
+
+    <!-- Start Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'product:product_list' %}">الرئيسية</a></li>
+            <li class="active">لوحة الاوردرات</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+
+
+
+    <!-- Start Dashboard -->
+
+    {% if orders %}
+    <div class="container">
+
+        <div class="dashboard-tabel-container">
+            <table>
+                <tr>
+                    <th>الكود</th>
+                    <th>الحالة</th>
+                    <th>التاريخ</th>
+                    <th>السعر</th>
+                    <th>العمولة</th>
+                    <th>اسم العميل</th>
+                    <th>تعديل بيانات العميل</th>
+                    <th>مسح الاوردر</th>
+                </tr>
+
+                {% for order in orders %}
+                    <tr>
+                        <td><a href="{% url 'order_app:order_details' order.id %}">{{ order.order_code }}</a></td>
+                        <td>{{ order.order_status }}</td>
+                        <td>{{ order.created }}</td>
+                        <td>{{ order.order_total_price }}</td>
+                        <td>{{ order.order_total_commission }}</td>
+                        <td>{{ order.order_client_name }}</td>
+                        <th><a href="{% url 'order_app:edit_order' order.pk %}">تعديل</a></th>
+                        <td><a href="{% url 'order_app:remove_order' order.pk %}">مسح</a></td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+    {% else %}
+        <!-- Start Empty Dashboard -->
+        <div class="container">
+            <div class="empty-products">
+                <h1>لا يوجد اوردرات بعد</h1>
+            </div>
+        </div>
+        <!-- End Empty Dashboard -->
+    {% endif %}
+
+    <!-- End Dashboard -->
+
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js%}

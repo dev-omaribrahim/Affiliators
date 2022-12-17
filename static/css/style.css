@@ -1,0 +1,205 @@
+
+body {
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+/* Start Landing Page */
+
+.landing {
+    /* background-color: red; */
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* #myVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+} */
+
+.navbar-default {
+    background: none;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    border: none;
+    border-radius: 0px;
+    margin-bottom: 0;
+    color: #000;
+    padding-top: 30px;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: none;
+}
+
+
+.navbar-default .navbar-nav > li > a {
+    color: #000;
+    font-size: 20px;
+    padding: 20px;
+    letter-spacing: 0 !important;
+}
+
+
+.navbar-default .navbar-nav > li > a:hover {
+    /* color: #FF3D4F; */
+    color: #000;
+}
+
+
+.navbar-default .navbar-brand {
+    color: #000;
+    font-size: 30px;
+}
+
+
+.navbar-default .navbar-brand:hover {
+    color: #000;
+}
+
+
+.overlay {
+    position: absolute;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    height: 100%;
+    width: 100%;
+}
+
+
+.content {
+    /* position: relative; */
+    /* background-color: green; */
+}
+
+
+.text {
+    height: 50px;
+    width: 400px;
+    /* background-color: red; */
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    text-align: center;
+    color: white;
+}
+
+.text img {
+    height: 100%;
+    width: 100%;
+}
+
+
+.text p {
+    font-size: 20px;
+}
+
+.text span {
+    font-size: 15px;
+    /* margin-top: 115%; */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    letter-spacing: .2em;
+    padding: 12px;
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+.text i {
+    font-size: 20px;
+}
+
+span#affiliators {
+    color: #FF3D4F;
+}
+
+
+#myVideo {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#myImage {
+    display: none;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.navbar-brand {
+    /* border-style: solid;
+    border-width: 2px;
+    border-color: #000; */
+    font-size: 25px !important;
+    color: #000;
+    letter-spacing: .2em;
+    padding: 12px;
+    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+/* @media (min-aspect-ratio: 16/9) {
+    #myVideo {
+        width:100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9) {
+    #myVideo {
+        width:auto;
+        height: 100%;
+    }
+} */
+
+
+@media (max-width: 660px) {
+
+    #myVideo {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        max-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        overflow-y: scroll;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    #myVideo {
+        display: none;
+    }
+
+    #myImage {
+        display: block;
+    }
+}
+
+
+/* End Landing Page */

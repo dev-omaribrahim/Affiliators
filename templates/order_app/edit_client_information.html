@@ -1,0 +1,94 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% load widget_tweaks %}
+
+{% block title %}Edit Order{% endblock title %}
+
+{% block content %}
+
+
+    <!-- Start Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'product:product_list' %}">الرئيسية</a></li>
+            <li class="active">معلومات العميل</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+
+    <!-- Start Client Info -->
+
+    <div class="container">
+
+        <div class="form-container client-info">
+
+            <h1>تعديل معلومات العميل</h1>
+
+            <form class="" action="" method="post" novalidate>
+                {% csrf_token %}
+                <div class="col-xs-7 form-input-container">
+<!--                    <input type="text" class="form-control" placeholder="Client Name">-->
+                    {% render_field form.order_client_name class="form-control" placeholder="Client Name - اسم العميل" %}
+                    <!-- Put Field Error in the P -->
+                    <p class="client-info-form-error">{{ form.order_client_name.errors }}</p>
+                </div>
+
+                <div class="col-xs-7 form-input-container">
+<!--                    <input type="text" class="form-control" placeholder="Phone number 1">-->
+                    {% render_field form.order_client_number class="form-control" placeholder="Phone Number 1 - رقم الموبايل 1" %}
+                    <p class="client-info-form-error">{{ form.order_client_number.errors }}</p>
+                </div>
+
+                <div class="col-xs-7 form-input-container">
+<!--                    <input type="text" class="form-control" placeholder="Phone number 2">-->
+                    {% render_field form.order_client_number2 class="form-control" placeholder="Phone Number 2 - رقم الموبايل 2" %}
+                    <p class="client-info-form-error">{{ form.order_client_number2.errors }}</p>
+                </div>
+
+                <div class="col-xs-7 form-input-container">
+<!--                    <input type="text" class="form-control" placeholder="City">-->
+                    {% render_field form.order_client_city class="form-control custom-client-info-field" placeholder="City - المحافظة" %}
+                    <p class="client-info-form-error">{{ form.order_client_city.errors }}</p>
+                </div>
+
+                <div class="col-xs-7 form-input-container">
+<!--                    <input type="text" class="form-control" placeholder="Area">-->
+                    {% render_field form.order_client_area class="form-control" placeholder="Area - المحافظة" %}
+                    <p class="client-info-form-error">{{ form.order_client_area.errors }}</p>
+                </div>
+
+                <div class="col-xs-7 form-input-container">
+<!--                    <input type="text" class="form-control" placeholder="Address">-->
+                    {% render_field form.order_client_address class="form-control" placeholder="Address - العنوان" %}
+                    <p class="client-info-form-error">{{ form.order_client_address.errors }}</p>
+                </div>
+
+                <div class="col-xs-7 form-input-container">
+<!--                    <input type="text" class="form-control" placeholder="Notes">-->
+                    {% render_field form.order_notes class="form-control custom-client-info-field" placeholder="Notes - الملاحظات" %}
+                    <p class="client-info-form-error">{{ form.order_notes.errors }}</p>
+                </div>
+
+                {% if order_status != "under_review" %}
+                <div class="col-xs-7 form-submit-button-container">
+                    <input type="submit" class="form-control" placeholder="Submit" value="إرسال">
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+    <!-- End Client Info -->
+
+
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js%}

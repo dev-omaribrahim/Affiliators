@@ -1,0 +1,54 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% block title %} Money Request History {% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'product:product_list' %}">الرئيسية</a></li>
+            <li class="active">طلبات العمولة السابقة</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+
+    <!-- Start History -->
+    {% if request_history %}
+        <div class="container">
+            <div class="dashboard-tabel-container history-tabel-container">
+                <table>
+                    <tr>
+                        <th>الحالة</th>
+                        <th>رقم المستلم</th>
+                        <th>رقم البطاقة</th>
+                        <th>تاريخ الطلب</th>
+                        <th>تاريخ تاكيد الطلب</th>
+                    </tr>
+                    {% for request in request_history %}
+                        <tr>
+                            <td>{{ request.money_request_status }}</td>
+                            <td>{{ request.money_receive_number }}</td>
+                            <td>{{ request.id_number }}</td>
+                            <td>{{ request.created }}</td>
+                            <td>{{ request.updated }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <!-- End History -->
+    {% else %}
+        <!-- Start Empty Money Request History -->
+        <div class="container">
+            <div class="empty-products">
+                <h1>لا يوجد طلبات عمولة سابقة بعد</h1>
+            </div>
+        </div>
+        <!-- End Empty Money Request History -->
+    {% endif %}
+{% endblock content %}

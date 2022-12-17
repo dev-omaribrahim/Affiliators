@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% block title %}Order Details{% endblock title %}
+
+{% block content %}
+
+    <!-- Start Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'product:product_list' %}">الرئيسية</a></li>
+            <li class="active">تفاصيل الاوردر</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Start Orders -->
+
+    {% if order %}
+        <div class="container">
+
+            <h2>معلومات الاوردر</h2>
+            <p>حالة الاوردر ::: <span>{{ order.order_status }}</span></p>
+            <p>كود الاوردر ::: <span>{{ order.order_code }}</span></p>
+            <p>اسم العميل ::: <span>{{ order.order_client_name }}</span></p>
+            <p>رقم العميل ::: <span>{{ order.order_client_number }}</span></p>
+            <p>رقم العميل 2 ::: <span>{{ order.order_client_number2 }}</span></p>
+            <p>محافظة العميل ::: <span>{{ order.order_client_city }}</span></p>
+            <p>منطقة العميل ::: <span>{{ order.order_client_area }}</span></p>
+            <p>عنوان العميل ::: <span>{{ order.order_client_address }}</span></p>
+            <p>ملاحظات الاوردر ::: <span>{{ order.order_notes }}</span></p>
+            <p>سعر شحن الاوردر ::: <span>{{ order.order_delivering_price }}</span></p>
+            <p>اجمالى سعر الاوردر ::: <span>{{ order.order_total_price }}</span></p>
+            <p>عمولة الاوردر ::: <span>{{ order.order_total_commission }}</span></p>
+            <p>تاريخ الاوردر ::: <span>{{ order.created }}</span></p>
+            <hr>
+
+            <h2>ORDER PRODUCTS</h2>
+            {% for product in order.products.all %}
+                {% if product.product_image %}
+                    <p>PRODUCT IMAGE</p>
+                    <img src="{{ product.product_image.url }}" alt="No Image Available"
+                         style="height: 200px; width: 200px;">
+                {% endif %}
+
+                <p>اسم المنتج ::: <span>{{ product.product_name }}</span></p>
+                <p>كود المنتج ::: <span>{{ product.product_code }}</span></p>
+                <p>مقاس المنتج ::: <span>{{ product.product_size }}</span></p>
+                <p>الكمية ::: <span>{{ product.product_quantity }}</span></p>
+                <p>سعر المنتج ::: <span>{{ product.product_price }}</span></p>
+                <p>عمولة المنتج ::: <span>{{ product.product_commission }}</span></p>
+                <p>اجمالى سعر المنتج ::: <span>{{ product.product_total_price }}</span></p>
+                <p>اجمالى عمولة المنتج ::: <span>{{ product.product_total_commission }}</span></p>
+                <hr>
+            {% endfor %}
+        </div>
+    {% else %}
+        <!-- Start Empty Orders -->
+        <div class="container">
+            <div class="empty-products">
+                <h1>You Have No Orders Yet</h1>
+            </div>
+        </div>
+        <!-- End Empty Orders -->
+    {% endif %}
+
+    <!-- End Orders -->
+
+    <!-- Start Pagination -->
+    {% include 'pagination.html' with packages=packages %}
+    <!-- End Pagination -->
+
+{% endblock content %}

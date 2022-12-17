@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {{ cart.get_total_price }}<br>
+    {% for x in cart %} {{ x }}<br> {% endfor %} <br>
+    {{ cart.cart.keys }}<br>
+    {{ cart|length}}<br>
+    total: commission {{ cart.get_total_commission }}
+    <p>Hello Cart Detail</p>
+
+<!--    {{ items }} <br>-->
+    {{ cart.get_total_price }}
+
+    {{ cart|length }}<br>
+    {{ cart }} <br>
+
+    {% for x in cart %} {{ x }} {% endfor %} <br>
+
+    <hr>
+    {% for item in cart %}
+        {% with product=item.product%}
+            {{ product.product_name}}
+        {% endwith %}
+    {% endfor %}
+</body>
+</html>c

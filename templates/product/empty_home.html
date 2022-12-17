@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% block title %}No Products yet{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'product:product_list' %}">الرئيسية</a></li>
+            <li class="active">المنتجات</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Start Category -->
+    <div class="container ">
+        <div class="dropdown text-center category">
+            <button class="btn btn-default dropdown-toggle dropdown-button" type="button" data-toggle="dropdown">
+                اختر من الاقسام
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-center">
+                {% for category in categories %}
+                    <li><a href="{{ category.get_absolute_url }}">{{ category.category_name}}<span class="n-products">{{ category.packages.count }}</span></a></li>
+                {% empty %}
+                    <li><a href="#">لا يوجد اقسام بعد <span class="n-products">0</span></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- End Category -->
+
+    <!-- Start Empty Products -->
+    <div class="container">
+        <div class="empty-products">
+            <h1>No Products yet</h1>
+        </div>
+    </div>
+    <!-- End Empty Products -->
+{% endblock content %}

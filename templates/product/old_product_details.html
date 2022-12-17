@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+</head>
+<body>
+    {% for product in products %}
+
+        {{ product.product_name }} <br>
+        {{ product.product_color }} <br>
+        {{ product.product_price }} <br>
+
+        {% if product.product_image %}
+            <img src="{{ product.product_image.url }}" alt="">
+        {% endif %}
+
+        {% for size_amount in product.size_amount.all %}
+            <p>{{ size_amount.size }} {{ size_amount.amount }}</p>
+        {% empty %}
+            <p>No size or amount added yet</p>
+        {% endfor %}
+
+    {% empty %}
+        <p>No products yet</p>
+    {% endfor %}
+</body>
+</html>
+
+
+
+
+

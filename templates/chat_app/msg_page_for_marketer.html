@@ -1,0 +1,75 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% block title %} MSG-Support {% endblock title %}
+
+{% block content %}
+    <!-- Start Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Msg-Support</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+
+    <!-- Start Msg-Support -->
+
+    <div class="container">
+
+        <div class="msg-support-header">
+            <h1>Chat With Support Team</h1>
+            <p>Leave Your Question and We Will Answer It</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-7 msg-support-container">
+
+                <!-- <div class="msg-support-header">
+                  <h1>Chat With Support Team</h1>
+                  <p>Ask YOur Question</p>
+                </div> -->
+
+                <div class="msg-box">
+                    {% if marketer_chat %}
+                        {% for msg in marketer_chat.chat_messages.all %}
+                            <div class="col-xs-12">
+                                <div class={% if request.user.id == msg.author.id %}"msg-sender"{% else %}"msg-reciver"{% endif %}>
+                                    <p>{{ msg.message_text }}</p>
+                                    <p class="msg-time-date">{{ msg.created_at }}</p>
+                                </div>
+                            </div>
+
+<!--                            <div class="col-xs-12">-->
+<!--                                <div class="msg-sender">-->
+<!--                                    <p>مساء النور</p>-->
+<!--                                    <p class="msg-time-date">10:00 am 5/5/2020</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        {% empty %}
+
+                        {% endfor %}
+
+                    {% endif %}
+
+
+                </div>
+                <div class="col-md-12 msg-form-container">
+                    <div class="inner-form-container">
+                        <form class="" action="" method="post">
+                            <input type="text" name="" value="" placeholder="Send a message">
+                            <input type="submit" name="" value="Send">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Msg-Support -->
+{% endblock %}

@@ -1,0 +1,143 @@
+
+body {
+  height: 100vh;
+}
+
+/* img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+  filter: blur(2px);
+} */
+
+.overlay {
+  position: absolute;
+  background-color: #FFF;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+#affilators_title {
+  margin-bottom: 30px;
+}
+
+.form-container {
+  background-color: #FFF;
+  height: 67%;
+  max-height: 67%;
+  width: 30%;
+  border: solid black 1px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  overflow-x: hidden;
+  overflow-y:auto;
+
+}
+
+
+.form-control {
+  height: 35px;
+  /* margin-left: 15%;
+  margin-right:15%;
+  margin-top: 7%;
+  width: 90%; */
+  margin-bottom: 20px;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit {
+  margin: 5% 25%;
+  width: 40%;
+
+}
+
+input[type=submit] {
+  /* background-color: #4A215B; */
+  background-color: #fb6461;
+  color: #FFF;
+}
+
+.form-title {
+  padding-left: 20px;
+  color: #000;
+  margin-bottom: 50px;
+}
+
+h2 {
+  color: #000;
+}
+
+span {
+  color: #FB6869;
+}
+
+#forget_password {
+  /* padding-left: 16%; */
+  margin-top: 10px;
+  color: #000;
+  display: block;
+}
+
+a {
+  color: #fb6461;
+}
+
+ a:hover {
+  color: #fb6461;
+}
+
+
+p {
+  color: #000;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.error-span {
+  color: #ff0000;
+}
+
+/******************************************************************************/
+
+
+
+@media screen and (max-width: 600px) {
+
+   .form-container {
+     width: 85%;
+   }
+}
+
+
+@media screen and (min-width: 601px) and (max-width: 1000px) {
+
+  .form-container {
+    width: 66%
+  }
+}
+
+@media screen and (min-width: 1370px) {
+
+  .form-container {
+    width: 55%
+  }
+}
+
+
+/*Password reset done*/
+.email-sent {
+    text-align: center;
+    font-size: 18px;
+}
+/*Password reset done*/

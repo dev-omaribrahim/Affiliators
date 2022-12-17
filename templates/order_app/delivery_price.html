@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% block title %} Delivery Price {% endblock title %}
+
+{% block content %}
+
+    <!-- Start Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#">الرئيسية</a></li>
+            <li class="active">اسعار الشحن</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Start Delivery Price -->
+    <div id="dashboard-tabel-container">
+
+        {% if cities %}
+
+            <div class="container">
+
+                <div class="dashboard-tabel-container" >
+                    {% for city in cities %}
+                        <h3>{{ city.city_name }} : {{ city.city_delivery_price }} LE</h3>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        {% else %}
+            <!-- Start Empty Cities -->
+            <div class="container">
+                <div class="empty-products">
+                    <h1>لا يوجد محافظات بعد</h1>
+                </div>
+            </div>
+            <!-- End Empty Cities -->
+        {% endif %}
+    </div>
+    <!-- End Delivery Price -->
+
+{% endblock content %}

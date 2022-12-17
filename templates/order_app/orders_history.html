@@ -1,0 +1,77 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load template_filters %}
+
+{% block title %} Orders History {% endblock title %}
+
+{% block content %}
+
+
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'product:product_list' %}">الرئيسية</a></li>
+            <li class="active">الاوردرات السابقة</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Start Category -->
+    <div class="container ">
+        <div class="dropdown text-center category">
+            <button class="btn btn-default dropdown-toggle dropdown-button" type="button" data-toggle="dropdown">
+                فلتر الاوردرات
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-center">
+                {% for status, counter in orders_status.items %}
+                    <li><a href="{% url 'order_app:orders_history' status %}">{{ status }}<span class="n-products">{{ counter }}</span></a></li>
+                {% endfor %}
+<!--                <li><a href="#">Under Review <span class="n-products">0</span></a></li>-->
+<!--                <li class=""><a href="#">Compeleted <span class="n-products">0</span></a></li>-->
+<!--                <li class=""><a href="#">Confirmed <span class="n-products">0</span></a></li>-->
+<!--                <li><a href="#">Rejected <span class="n-products">0</span></a></li>-->
+            </ul>
+        </div>
+    </div>
+    <!-- End Category -->
+
+    <!-- Start History -->
+    {% if orders %}
+        <div class="container">
+            <div class="dashboard-tabel-container history-tabel-container">
+                <table>
+                    <tr>
+                        <th>الكود</th>
+                        <th>الحالة</th>
+                        <th>التاريخ</th>
+                        <th>السعر</th>
+                        <th>العمولة</th>
+                        <th>اسم العميل</th>
+                    </tr>
+                    {% for order in orders %}
+                        <tr>
+                            <td><a href="{% url 'order_app:order_details' order.id %}">{{ order.order_code }}</a></td>
+                            <td>{{ order.order_status }}</td>
+                            <td>{{ order.created }}</td>
+                            <td>{{ order.order_total_price }}</td>
+                            <td>{{ order.order_total_commission }}</td>
+                            <td>{{ order.order_client_name }}</td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+        <!-- End History -->
+    {% else %}
+        <!-- Start Empty History -->
+        <div class="container">
+            <div class="empty-products">
+                <h1>لا يوجد اوردرات بعد</h1>
+            </div>
+        </div>
+        <!-- End Empty History -->
+    {% endif %}
+{% endblock content %}

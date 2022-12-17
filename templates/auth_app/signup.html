@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Sign up</title>
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/all.min.css' %}"> <!-- font awesomw lib -->
+        <link rel="stylesheet" href="{% static 'css/style_signup.css' %}">
+    </head>
+    <body>
+
+    <!-- <img src="static/images/Depositphotos_11327077.jpg" alt=""> -->
+
+    <div class="container">
+
+        <div class="form-container">
+
+            <h2 class="form-title" id="signin_h2">تسجيل حساب جديد</h2>
+
+            <h2 class="text-center" id="affilators_title"><span>AFF</span>ILIATORS</h2>
+
+            <form class="" action="{% url 'sign_up' %}" method="post" novalidate>
+                {% csrf_token %}
+                <div class="row">
+
+                    <div class="centered">
+                        <div class="margend col-xs-10 col-md-6">
+<!--                            <input type="text" class="form-control" placeholder="Email / username">-->
+                          {% render_field signup_form.first_name class="form-control" placeholder="first name - الاسم الاول" %}
+                          {{ signup_form.first_name.errors }}
+
+                        </div>
+                    </div>
+
+                    <div class="centered">
+                        <div class="margend col-xs-10 col-md-6">
+<!--                            <input type="text" class="form-control" placeholder="Email / username">-->
+                          {% render_field signup_form.last_name class="form-control" placeholder="last name - الاسم الثانى" %}
+                          {{ signup_form.last_name.errors }}
+                        </div>
+                    </div>
+
+                    <div class="centered">
+                        <div class="margend col-xs-10 col-md-6">
+<!--                            <input type="text" class="form-control" placeholder="Email / username">-->
+                          {% render_field signup_form.email class="form-control" placeholder="Email - البريد الالكترونى" %}
+                          {{ signup_form.email.errors }}
+                        </div>
+                    </div>
+
+
+                    <div class="centered">
+                        <div class="margend col-xs-10 col-md-6">
+<!--                            <input type="text" class="form-control" placeholder="Email / username">-->
+                          {% render_field signup_form.username class="form-control" placeholder="username - اسم المستخدم" %}
+                          {{ signup_form.username.errors }}
+                        </div>
+                    </div>
+
+                    <div class="centered">
+                        <div class="margend col-xs-10 col-md-6">
+<!--                            <input type="text" class="form-control" placeholder="Email / username">-->
+                          {% render_field signup_form.password1 class="form-control" placeholder="password - كلمة المرور" %}
+                          {{ signup_form.password1.errors }}
+                        </div>
+                    </div>
+
+                    <div class="centered">
+                        <div class="margend col-xs-10 col-md-6">
+<!--                            <input type="text" class="form-control" placeholder="Email / username">-->
+                          {% render_field signup_form.password2 class="form-control" placeholder="confirm password - تأكيد كلمة المرور" %}
+                          {{ signup_form.password2.errors }}
+                        </div>
+                    </div>
+
+                    <div class="centered">
+                        <div class="margend col-xs-10 col-md-6">
+<!--                            <input type="text" class="form-control" placeholder="Email / username">-->
+                          {% render_field signup_form.mobile_number class="form-control" placeholder="mobile number - رقم الموبايل" %}
+                          {{ signup_form.mobile_number.errors }}
+                        </div>
+                    </div>
+
+                    <div class="centered">
+                        <div class="margend col-xs-10 col-md-6">
+<!--                            <input type="text" class="form-control" placeholder="Email / username">-->
+                          {% render_field signup_form.id_number class="form-control" placeholder="id number - الرقم القومى" %}
+                          {{ signup_form.id_number.errors }}
+
+                        </div>
+                    </div>
+
+                    <div class="centered">
+                        <div class="margend col-xs-10 col-md-6">
+<!--                            <input type="text" class="form-control" placeholder="Email / username">-->
+                          {% render_field signup_form.gender class="form-control" placeholder="Gender" %}
+                          {{ signup_form.gender.errors }}
+                        </div>
+                    </div>
+
+
+                    <div class="centered">
+                        <div class="margend col-xs-10 col-md-6">
+<!--                            <input type="text" class="form-control" placeholder="Email / username">-->
+                          {% render_field signup_form.age class="form-control" placeholder="age - السن" %}
+                          {{ signup_form.age.errors }}
+                        </div>
+                    </div>
+
+                    <div class="centered">
+                        <div class="margend col-xs-10 col-md-6">
+<!--                            <input type="text" class="form-control" placeholder="Email / username">-->
+                          {% render_field signup_form.address class="form-control" placeholder="address - العنوان" %}
+                          {{ signup_form.address.errors }}
+                        </div>
+                    </div>
+
+                    <div class="centered">
+                        <div class="margend submit col-xs-10 col-md-6">
+                            <input type="submit" class="form-control" value="تسجيل حساب جديد">
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+
+            <p class="text-center">لديك حساب بالفعل ؟  <a href="{% url 'sign_in' %}" id="Already_have_an_account">تسجيل دخول</a></p>
+        </div>
+
+    </div>
+    <div class="overlay">
+
+    </div>
+
+
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>
